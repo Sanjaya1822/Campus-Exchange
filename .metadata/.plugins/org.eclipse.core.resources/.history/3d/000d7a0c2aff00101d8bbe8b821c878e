@@ -1,0 +1,207 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= BACKGROUND IMAGE + OVERLAY ================= */
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../images/bg.jpg") no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+}
+
+.navbar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #1565c0;
+    font-weight: 600;
+}
+
+/* ================= FLOATING CARD ================= */
+.container {
+    width: 420px;
+    margin-top: 90px;
+    background: rgba(255,255,255,0.95);
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 25px 40px rgba(0,0,0,0.35);
+    animation: floatCard 1.2s ease;
+}
+
+/* Floating animation */
+@keyframes floatCard {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ================= HEADINGS ================= */
+.container h1,
+.container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0d47a1;
+}
+
+/* ================= INPUT WITH ICON ================= */
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 16px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 6px rgba(25,118,210,0.4);
+}
+
+/* ================= BUTTON ================= */
+button,
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #0d47a1;
+    transform: translateY(-2px);
+}
+
+/* ================= LINKS ================= */
+.link {
+    text-align: center;
+    margin-top: 18px;
+}
+
+.link a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ================= SUCCESS & ERROR MESSAGES ================= */
+.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+/* ================= HERO SECTION ================= */
+.hero {
+    margin-top: 120px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ================= FEATURES GRID ================= */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* ================= FEATURE CARD ================= */
+.feature-card {
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card i {
+    font-size: 32px;
+    color: #1976d2;
+    margin-bottom: 12px;
+}
+
+.feature-card h3 {
+    margin-bottom: 8px;
+    color: #0d47a1;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #444;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+}
+

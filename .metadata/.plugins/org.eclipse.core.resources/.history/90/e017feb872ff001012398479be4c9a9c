@@ -1,0 +1,39 @@
+<%
+    if (session == null || session.getAttribute("userEmail") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent - CampusExchange</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="dashboard.jsp">Dashboard</a>
+    <a href="buy.jsp">Buy</a>
+    <a href="sell.jsp">Sell</a>
+    <a href="rent.jsp">Rent</a>
+    <a href="donate.jsp">Donate</a>
+</div>
+
+<div class="auth-container">
+    <h2>Rent Items</h2>
+    <p style="text-align:center;">
+        Rent items for short-term academic or personal use.
+    </p>
+
+    <ul style="margin-top:20px; line-height:1.8;">
+        <li>🚲 Cycles</li>
+        <li>🧮 Calculators</li>
+        <li>🏠 Rooms</li>
+        <li>📽 Projectors</li>
+    </ul>
+</div>
+
+</body>
+</html>

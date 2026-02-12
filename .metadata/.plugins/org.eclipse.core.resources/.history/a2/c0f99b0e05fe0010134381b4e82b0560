@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    text-align: center;
+    padding: 15px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.navbar a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #1e88e5;
+    font-weight: 600;
+}
+
+/* Page center */
+.container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #1e88e5;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1565c0;
+}
+
+/* Links */
+.link {
+    margin-top: 15px;
+}
+
+.link a {
+    text-decoration: none;
+    color: #1e88e5;
+    font-weight: 500;
+}

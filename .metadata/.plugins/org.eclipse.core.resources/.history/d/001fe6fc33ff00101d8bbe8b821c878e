@@ -1,0 +1,33 @@
+package com.campusexchange.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/register")
+public class RegisterServlet extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+
+	    String name = request.getParameter("name");
+	    String email = request.getParameter("email");
+	    String password = request.getParameter("password");
+
+	    // Temporary registration logic (DB later)
+	    if (name != null && email != null && password != null) {
+
+	        // Registration successful → redirect to login page
+	        response.sendRedirect("login.jsp");
+
+	    } else {
+	        // Registration failed → back to register page
+	        response.sendRedirect("register.jsp");
+	    }
+	}
+
+}

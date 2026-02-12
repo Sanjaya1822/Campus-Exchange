@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+
+<%
+   
+    if (session == null || session.getAttribute("userEmail") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+    String userEmail = (String) session.getAttribute("userEmail");
+%>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | CampusExchange</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-left">CampusExchange</div>
+    <div class="nav-right">
+        <a href="dashboard.jsp">Dashboard</a>
+        <a href="buy.jsp">Buy</a>
+        <a href="sell.jsp">Sell</a>
+        <a href="rent.jsp">Rent</a>
+        <a href="donate.jsp">Donate</a>
+        <a href="logout">Logout</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="dashboard-hero">
+    <h1>Welcome back 👋</h1>
+    <p>Logged in as <strong><%= userEmail %></strong></p>
+</div>
+
+<!-- QUICK ACTIONS -->
+<div class="quick-actions">
+    <h2>What would you like to do?</h2>
+
+    <div class="dashboard-actions">
+        <a href="buy.jsp" class="action-card">
+            <h3>Buy Items</h3>
+            <p>Find books, gadgets & essentials from students</p>
+        </a>
+
+        <a href="sell.jsp" class="action-card">
+            <h3>Sell Items</h3>
+            <p>Post items you no longer need</p>
+        </a>
+
+        <a href="rent.jsp" class="action-card">
+            <h3>Rent Items</h3>
+            <p>Rent items for short-term use</p>
+        </a>
+
+        <a href="donate.jsp" class="action-card">
+            <h3>Donate Items</h3>
+            <p>Help others by donating unused items</p>
+        </a>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-it-works">
+    <h2>How CampusExchange Works</h2>
+
+    <div class="steps">
+        <div class="step-box">
+            <h3>1. Post or Browse</h3>
+            <p>Sell, rent or donate items — or browse what others posted.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>2. Connect</h3>
+            <p>Connect directly with students within your campus.</p>
+        </div>
+
+        <div class="step-box">
+            <h3>3. Exchange</h3>
+            <p>Buy, rent or receive items safely and easily.</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="dashboard-footer">
+    <h2>Have something to share?</h2>
+    <p>Turn unused items into value or help someone today.</p>
+    <a href="sell.jsp" class="footer-btn">Post an Item</a>
+</div>
+
+</html>

@@ -1,0 +1,56 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusExchange</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="index.jsp">Home</a>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <h1>CampusExchange</h1>
+    <p>A trusted marketplace for students to Buy, Sell, Rent and  Donate</p>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+
+    <div class="feature-card">
+        <i class="fa fa-shopping-cart"></i>
+        <h3>Buy</h3>
+        <p>Find books, gadgets and essentials from fellow students</p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa fa-tags"></i>
+        <h3>Sell</h3>
+        <p>Sell unused items easily within your campus</p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa fa-home"></i>
+        <h3>Rent</h3>
+        <p>Rent cycles, calculators, rooms & more</p>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa fa-heart"></i>
+        <h3>Donate</h3>
+        <p>Support juniors by donating items you don’t need</p>
+    </div>
+
+</div>
+
+</body>
+
+
+</html>

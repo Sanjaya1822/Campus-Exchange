@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CampusExchange</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.jsp">Home</a>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+</div>
+
+<div class="container">
+    <h1>CampusExchange</h1>
+    <p style="text-align:center;">A marketplace for students</p>
+</div>
+
+</body>
+
+</html>

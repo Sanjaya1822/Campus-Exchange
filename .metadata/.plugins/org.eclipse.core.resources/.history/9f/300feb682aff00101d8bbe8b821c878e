@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - CampusExchange</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.jsp">Home</a>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+</div>
+
+<div class="container">
+    <h2>User Registration</h2>
+
+    <form action="register" method="post">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="link">
+        Already registered? <a href="login.jsp">Login here</a>
+    </div>
+</div>
+
+</body>
+</html>

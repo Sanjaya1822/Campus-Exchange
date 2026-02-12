@@ -1,0 +1,59 @@
+package com.campusexchange.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.campusexchange.db.DBConnection;
+
+@WebServlet("/interest")
+public class InterestServlet extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        String buyerEmail = (String) session.getAttribute("userEmail");
+        String itemId = request.getParameter("itemId");
+
+        try {
+            Connection con = DBConnection.getConnection();
+
+            // Insert buyer interest
+            PreparedStatement ps = con.prepareStatement(
+                "INSERT INTO item_requests (item_id, buyer_email) VALUES (?, ?)"
+            );
+            ps.setInt(1, Integer.parseInt(itemId));
+            ps.setString(2, buyerEmail);
+            ps.executeUpdate();
+
+            // Update item status
+            PreparedStatement ps2 = con.prepareStatement(
+                "UPDATE items SET status='REQUESTED' WHERE id=?"
+            );
+            ps2.setInt(1, Integer.parseInt(itemId));
+            ps2.executeUpdate();
+
+            con.close();
+
+            response.sendRedirect("itemDetails.jsp?id=" + itemId + "&requested=true");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().println("Interest failed");
+        }
+    }
+}

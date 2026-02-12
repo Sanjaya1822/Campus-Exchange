@@ -1,0 +1,110 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== BACKGROUND (DARK GRADIENT) ===== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        120deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
+    color: #ffffff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    padding: 18px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.navbar a {
+    color: #4fc3f7;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar a:hover {
+    color: #ffffff;
+}
+
+/* ===== CONTAINER (GLASS CARD) ===== */
+.container {
+    width: 420px;
+    margin: 90px auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border-radius: 14px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+/* ===== HEADINGS ===== */
+.container h1,
+.container h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #e3f2fd;
+}
+
+/* ===== INPUTS ===== */
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== BUTTON ===== */
+button,
+input[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2196f3, #21cbf3);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(33, 203, 243, 0.4);
+}
+
+/* ===== LINKS ===== */
+.link {
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #81d4fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}

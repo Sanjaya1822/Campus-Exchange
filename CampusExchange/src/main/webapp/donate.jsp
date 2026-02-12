@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="com.campusexchange.db.DBConnection" %>
+<%
+    if (session == null || session.getAttribute("userEmail") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate Items</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="dashboard.jsp">Dashboard</a>
+    <a href="buy.jsp">Buy</a>
+    <a href="sell.jsp">Sell</a>
+    <a href="rent.jsp">Rent</a>
+    <a href="donate.jsp">Donate</a>
+    <a href="logout">Logout</a>
+</div>
+
+<div class="auth-container">
+    <h2>Items for Donation</h2>
+
+    <div class="items-grid">
+    <%
+    Connection con = DBConnection.getConnection();
+        PreparedStatement ps = con.prepareStatement(
+            "SELECT * FROM items WHERE category=? AND status='AVAILABLE'"
+        );
+        ps.setString(1, "donate");
+
+        ResultSet rs = ps.executeQuery();
+        boolean found = false;
+
+        while (rs.next()) {
+            found = true;
+    %>
+        <div class="item-card">
+            <img src="uploads/<%= rs.getString("image") %>" alt="Item Image">
+
+            <h3><%= rs.getString("title") %></h3>
+            <p><%= rs.getString("description") %></p>
+
+            <p class="price">Free</p>
+
+            <a href="itemDetails.jsp?id=<%= rs.getInt("id") %>"
+               class="btn-primary">
+               View Details
+            </a>
+        </div>
+    <%
+        }
+
+        if (!found) {
+    %>
+        <p style="text-align:center; color:gray; width:100%;">
+            No items available for donation right now
+        </p>
+    <%
+        }
+
+        con.close();
+    %>
+    </div>
+</div>
+
+
+</body>
+</html>
+         

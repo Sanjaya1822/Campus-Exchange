@@ -1,0 +1,136 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="com.campusexchange.db.DBConnection" %>
+
+<%
+    // SESSION CHECK
+    HttpSession sess = request.getSession(false);
+    if (sess == null || sess.getAttribute("userEmail") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+
+    String userEmail = (String) sess.getAttribute("userEmail");
+    String itemIdStr = request.getParameter("id");
+
+    if (itemIdStr == null) {
+        response.sendRedirect("buy.jsp");
+        return;
+    }
+
+    int itemId = Integer.parseInt(itemIdStr);
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Details</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="dashboard.jsp">Dashboard</a>
+    <a href="buy.jsp">Buy</a>
+    <a href="sell.jsp">Sell</a>
+    <a href="rent.jsp">Rent</a>
+    <a href="donate.jsp">Donate</a>
+    <a href="logout">Logout</a>
+</div>
+
+<%
+    Connection con = DBConnection.getConnection();
+    PreparedStatement ps = con.prepareStatement(
+        "SELECT * FROM items WHERE id = ?"
+    );
+    ps.setInt(1, itemId);
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+
+        String sellerEmail = rs.getString("seller_email");
+        String status = rs.getString("status");
+%>
+
+<div class="auth-container">
+
+    <img src="uploads/<%= rs.getString("image") %>"
+         style="width:100%; max-height:300px; object-fit:cover; border-radius:10px;">
+
+    <h2><%= rs.getString("title") %></h2>
+
+    <p><%= rs.getString("description") %></p>
+
+    <p class="price">
+        ₹ <%= rs.getDouble("price") %>
+    </p>
+
+    <p>
+        Seller: <strong><%= sellerEmail %></strong>
+    </p>
+
+    <hr style="margin:20px 0;">
+
+    <!-- SELLER VIEW -->
+    <%
+        if (userEmail.equals(sellerEmail)) {
+    %>
+
+        <p style="color:#7b1e3a; font-weight:bold;">
+            You posted this item
+        </p>
+
+        <p>Status: <strong><%= status %></strong></p>
+
+        <h3 style="margin-top:20px;">Interested Students</h3>
+
+        <%
+            PreparedStatement psReq = con.prepareStatement(
+                "SELECT buyer_email FROM item_requests WHERE item_id = ?"
+            );
+            psReq.setInt(1, itemId);
+            ResultSet rsReq = psReq.executeQuery();
+
+            boolean found = false;
+            while (rsReq.next()) {
+                found = true;
+        %>
+                <p>📧 <%= rsReq.getString("buyer_email") %></p>
+        <%
+            }
+            if (!found) {
+        %>
+                <p style="color:gray;">No interest yet</p>
+        <%
+            }
+        %>
+
+    <!-- BUYER VIEW -->
+    <%
+        } else {
+    %>
+
+        <form action="interest" method="post">
+            <input type="hidden" name="itemId" value="<%= itemId %>">
+            <button type="submit" class="btn-primary">
+                I'm Interested
+            </button>
+        </form>
+
+    <%
+        }
+    %>
+
+</div>
+
+<%
+    } else {
+%>
+    <p style="text-align:center;">Item not found</p>
+<%
+    }
+    con.close();
+%>
+
+</body>
+</html>
