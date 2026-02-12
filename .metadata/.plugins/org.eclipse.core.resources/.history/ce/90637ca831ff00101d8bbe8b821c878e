@@ -1,7 +1,0 @@
-package com.campusexchange.servlet;
-
-import javax.servlet.http.HttpServlet;
-
-public class DBTestServlet extends HttpServlet {
-
-}

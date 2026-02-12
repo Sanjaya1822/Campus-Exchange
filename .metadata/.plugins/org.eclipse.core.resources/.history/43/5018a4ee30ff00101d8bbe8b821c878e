@@ -1,5 +1,0 @@
-package com.campusexchange.db;
-
-public class DBConnection {
-
-}
