@@ -33,7 +33,6 @@ public class InterestServlet extends HttpServlet {
         try {
             Connection con = DBConnection.getConnection();
 
-            // 🔍 CHECK DUPLICATE INTEREST
             String checkSql =
                 "SELECT 1 FROM item_requests WHERE item_id=? AND buyer_email=?";
             PreparedStatement checkPs = con.prepareStatement(checkSql);
@@ -49,7 +48,6 @@ public class InterestServlet extends HttpServlet {
                 return;
             }
 
-            // ✅ INSERT INTEREST
             String insertSql =
                 "INSERT INTO item_requests (item_id, buyer_email) VALUES (?, ?)";
             PreparedStatement ps = con.prepareStatement(insertSql);
