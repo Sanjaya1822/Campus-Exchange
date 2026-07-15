@@ -37,7 +37,7 @@ The main objective of Campus Exchange is to:
 - Java (Servlets & JSP)
 
 ### Database
-- MySQL
+-PostgreSQL
 
 ### Server
 - Apache Tomcat
